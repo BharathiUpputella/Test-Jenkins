@@ -14,7 +14,7 @@ pipeline {
 					#!/bin/bash
 					cd "${WORKSPACE}/foldertest"
 					ls
-					sudo sh build.sh -e test
+					sh build.sh -e test
 				'''
 			}
 
