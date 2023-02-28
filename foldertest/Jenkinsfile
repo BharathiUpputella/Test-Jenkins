@@ -7,18 +7,6 @@ pipeline {
                 echo 'Hello World from inside folder'
             }
         }
-        stage('Build') {
-            steps {
-				echo 'Building the application'
-				sh script:'''
-					#!/bin/bash
-					cd "${WORKSPACE}/foldertest"
-					ls
-					sh build.sh -e test
-				'''
-			}
-
-        }
     }
 }
 
