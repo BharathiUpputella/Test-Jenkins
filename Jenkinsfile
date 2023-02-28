@@ -10,7 +10,7 @@ pipeline {
         stage('copy code to vm'){
             steps{
                 script {
-                    zip zipFile: 'test.zip',overwrite: 'true',exclude: '.git'
+                    zip zipFile: 'test.zip', dir: '', overwrite: 'true', exclude: '.git'
                }
             }
         }
