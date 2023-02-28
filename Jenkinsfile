@@ -7,7 +7,7 @@ pipeline {
                 echo 'Hellooo World'
             }
         }
-        stage('copy code to vm'){
+        stage('generate zip'){
             steps{
                 script {
                     zip zipFile: 'test.zip', dir: '', overwrite: 'true', exclude: '.git'
