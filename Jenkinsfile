@@ -19,8 +19,8 @@ pipeline {
                 script {
                     def remote = [name: 's_marsaq', host: '10.195.59.145', user: 's_marsaq', password: 'BFu*ESV&FXiI', allowAnyHosts: true]
                     sshPut remote: remote, from: './test.zip', filterRegex: /.zip$/, into: '/tmp'
-                    def remote = [name: 's_marsaq', host: '10.195.59.144', user: 's_marsaq', password: 'BFu*ESV&FXiI', allowAnyHosts: true]
-                    sshPut remote: remote, from: './test.zip', filterRegex: /.zip$/, into: '/tmp'
+                    def remote1 = [name: 's_marsaq', host: '10.195.59.144', user: 's_marsaq', password: 'BFu*ESV&FXiI', allowAnyHosts: true]
+                    sshPut remote: remote1, from: './test.zip', filterRegex: /.zip$/, into: '/tmp'
                }
             }
         }                         
