@@ -12,7 +12,7 @@ pipeline {
                 script {
                     zip zipFile: 'test.zip', dir: '', overwrite: 'true', exclude: '.git'
                     def remote = [name: 's_marsaq', host: '10.195.59.145', user: 's_marsaq', password: 'BFu*ESV&FXiI', allowAnyHosts: true
-                    sshPut remote: remote, from: './', filterRegex: /.zip$/, into: '/tmp'
+                     sshPut remote: remote, from: './', filterRegex: /.zip$/, into: '/tmp'
                }
             }
         }
