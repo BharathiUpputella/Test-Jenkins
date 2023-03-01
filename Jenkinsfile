@@ -20,11 +20,11 @@ pipeline {
         stage('copy zip'){
             steps{
                 script {
-                    withCredentials([string(credentialsId: 'vm-password', variable: 'password')]){
+                    
                     def remote = [name: 's_marsaq', host: '10.195.59.145', user: 's_marsaq', password: '$password', allowAnyHosts: true]
                     sshPut remote: remote, from: './test.zip', filterRegex: /.zip$/, into: '/tmp'
              
-                    }
+                    
                     
                }
             }
