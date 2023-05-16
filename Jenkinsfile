@@ -1,7 +1,10 @@
 pipeline {
     agent any
+	parameters {
+	choice(name: "TEST_CHOICE", choices: ["production", "staging", "development"], description: "Deploying to specific env")
+    }
   environment {
-    	password = credentials('vm-password')
+    	tag_number = "${env.BUILD_NUMBER}"
 	
     }
     stages {
@@ -9,23 +12,20 @@ pipeline {
             steps {
                 echo 'Hellooo World'
             }
-        }
-        stage('generate zip'){
+        
+        stage('dev block'){
             steps{
-                script {
-                    zip zipFile: 'test.zip', dir: '', overwrite: 'true', exclude: '.git'          
-                }
+                echo "Deploy to $params.choices ios environment."  
+               }
             }
-        }
-        stage('copy zip'){
+	stage('stg block'){
             steps{
-                script {
-                    withCredentials([string(credentialsId: 'vm-password', variable: 'password')]){
-                    def remote = [name: 's_marsaq', host: '10.195.59.145', user: 's_marsaq', password: '$password', allowAnyHosts: true]
-                    sshPut remote: remote, from: './test.zip', filterRegex: /.zip$/, into: '/tmp'
-		    }	  
-                    
-                    
+                echo "Deploy to $params.choices ios environment."  
+               }
+            }
+	stage('prod block'){
+            steps{
+                echo "Deploy to $params.choices ios environment."  
                }
             }
         }                         
