@@ -1,7 +1,7 @@
 pipeline {
     agent any
 	parameters {
-	choice(name: "TEST_CHOICE", choices: ["production", "staging", "development"], description: "Deploying to specific env")
+	choice(name: "App_Deployment", choices: ["production", "staging", "development"], description: "Deploying to below env")
     }
   environment {
     	tag_number = "${env.BUILD_NUMBER}"
@@ -16,61 +16,61 @@ pipeline {
         stage('dev ios block'){
 		when {
     expression { 
-        params.TEST_CHOICE == 'development'
+        params.App_Deployment == 'development'
     }
 }
             steps{
-                echo "Deploy to $TEST_CHOICE ios environment."  
+                echo "Deploy to $App_Deployment ios environment."  
                }
             }
 	   stage('dev android block'){
 		when {
     expression { 
-        params.TEST_CHOICE == 'development'
+        params.App_Deployment == 'development'
     }
 }
             steps{
-                echo "Deploy to $TEST_CHOICE android environment."  
+                echo "Deploy to $App_Deployment android environment."  
                }
             }
 	stage('stg ios block'){
 		when {
     expression { 
-        params.TEST_CHOICE == 'staging'
+        params.App_Deployment == 'staging'
     }
 }
             steps{
-                echo "Deploy to $TEST_CHOICE ios environment."  
+                echo "Deploy to $App_Deployment ios environment."  
                }
             }
 	   stage('stg android  block'){
 		when {
     expression { 
-        params.TEST_CHOICE == 'staging'
+        params.App_Deployment == 'staging'
     }
 }
             steps{
-                echo "Deploy to $TEST_CHOICE android environment."  
+                echo "Deploy to $App_Deployment android environment."  
                }
             }
 	stage('prod ios block'){
 		when {
     expression { 
-        params.TEST_CHOICE == 'production'
+        params.App_Deployment == 'production'
     }
 }
             steps{
-                echo "Deploy to $TEST_CHOICE ios environment."  
+                echo "Deploy to $App_Deployment ios environment."  
                }
             }
 	   stage('prod android block'){
 		when {
     expression { 
-        params.TEST_CHOICE == 'production'
+        params.App_Deployment == 'production'
     }
 }
             steps{
-                echo "Deploy to $TEST_CHOICE android environment."  
+                echo "Deploy to $App_Deployment android environment."  
                }
             }
         }
