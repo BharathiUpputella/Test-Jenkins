@@ -14,16 +14,31 @@ pipeline {
             }
 	}
         stage('dev block'){
+		when {
+    expression { 
+        params.name == 'development'
+    }
+}
             steps{
                 echo "Deploy to $TEST_CHOICE ios environment."  
                }
             }
 	stage('stg block'){
+		when {
+    expression { 
+        params.name == 'staging'
+    }
+}
             steps{
                 echo "Deploy to $TEST_CHOICE ios environment."  
                }
             }
 	stage('prod block'){
+		when {
+    expression { 
+        params.name == 'production'
+    }
+}
             steps{
                 echo "Deploy to $TEST_CHOICE ios environment."  
                }
