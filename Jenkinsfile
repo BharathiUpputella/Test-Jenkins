@@ -15,7 +15,7 @@ pipeline {
 	}
         stage('dev block'){
             steps{
-                echo "Deploy to $params.choices ios environment."  
+                echo "Deploy to $TEST_CHOICE ios environment."  
                }
             }
 	stage('stg block'){
