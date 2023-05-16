@@ -16,7 +16,7 @@ pipeline {
         stage('dev block'){
 		when {
     expression { 
-        params.name == 'development'
+        params.TEST_CHOICE == 'development'
     }
 }
             steps{
@@ -26,7 +26,7 @@ pipeline {
 	stage('stg block'){
 		when {
     expression { 
-        params.name == 'staging'
+        params.TEST_CHOICE == 'staging'
     }
 }
             steps{
@@ -36,7 +36,7 @@ pipeline {
 	stage('prod block'){
 		when {
     expression { 
-        params.name == 'production'
+        params.TEST_CHOICE == 'production'
     }
 }
             steps{
