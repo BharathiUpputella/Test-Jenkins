@@ -20,12 +20,12 @@ pipeline {
             }
 	stage('stg block'){
             steps{
-                echo "Deploy to $params.choices ios environment."  
+                echo "Deploy to $TEST_CHOICE ios environment."  
                }
             }
 	stage('prod block'){
             steps{
-                echo "Deploy to $params.choices ios environment."  
+                echo "Deploy to $TEST_CHOICE ios environment."  
                }
             }
         }
