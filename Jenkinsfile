@@ -28,6 +28,5 @@ pipeline {
                 echo "Deploy to $params.choices ios environment."  
                }
             }
-        }                         
-    }
+        }
 }
