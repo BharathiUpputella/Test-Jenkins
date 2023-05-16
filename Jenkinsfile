@@ -13,7 +13,7 @@ pipeline {
                 echo 'Hellooo World'
             }
 	}
-        stage('dev block'){
+        stage('dev ios block'){
 		when {
     expression { 
         params.TEST_CHOICE == 'development'
@@ -23,7 +23,17 @@ pipeline {
                 echo "Deploy to $TEST_CHOICE ios environment."  
                }
             }
-	stage('stg block'){
+	   stage('dev android block'){
+		when {
+    expression { 
+        params.TEST_CHOICE == 'development'
+    }
+}
+            steps{
+                echo "Deploy to $TEST_CHOICE android environment."  
+               }
+            }
+	stage('stg ios block'){
 		when {
     expression { 
         params.TEST_CHOICE == 'staging'
@@ -33,7 +43,17 @@ pipeline {
                 echo "Deploy to $TEST_CHOICE ios environment."  
                }
             }
-	stage('prod block'){
+	   stage('stg android  block'){
+		when {
+    expression { 
+        params.TEST_CHOICE == 'staging'
+    }
+}
+            steps{
+                echo "Deploy to $TEST_CHOICE android environment."  
+               }
+            }
+	stage('prod ios block'){
 		when {
     expression { 
         params.TEST_CHOICE == 'production'
@@ -41,6 +61,16 @@ pipeline {
 }
             steps{
                 echo "Deploy to $TEST_CHOICE ios environment."  
+               }
+            }
+	   stage('prod android block'){
+		when {
+    expression { 
+        params.TEST_CHOICE == 'production'
+    }
+}
+            steps{
+                echo "Deploy to $TEST_CHOICE android environment."  
                }
             }
         }
