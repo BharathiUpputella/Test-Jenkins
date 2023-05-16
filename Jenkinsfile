@@ -12,7 +12,7 @@ pipeline {
             steps {
                 echo 'Hellooo World'
             }
-        
+	}
         stage('dev block'){
             steps{
                 echo "Deploy to $params.choices ios environment."  
