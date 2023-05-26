@@ -16,7 +16,7 @@ pipeline {
         stage('dev ios block'){
 		when {
     allOf { 
-	 expression{branch 'dev'}
+	 expression{branch 'dev1'}
 	 expression{params.App_Deployment == 'development'}
     }
 }
@@ -27,7 +27,7 @@ pipeline {
 	   stage('dev android block'){
 		when {
     allOf { 
-	 expression{branch 'dev'}
+	 expression{branch 'dev1'}
 	 expression{params.App_Deployment == 'development'}
     }
 }
