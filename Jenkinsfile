@@ -2,6 +2,7 @@ pipeline {
     agent any
 	parameters {
 	choice(name: "App_Deployment", choices: ["production", "staging", "development"], description: "Deploying to below env")
+        choice(name: "branch", choices: ["main", "staging", "dev"], description: "select the branch")
     }
   environment {
     	tag_number = "${env.BUILD_NUMBER}"
@@ -16,7 +17,7 @@ pipeline {
         stage('dev ios block'){
 		when {
     allOf { 
-	 expression{branch 'dev'}
+	 expression{params.branch == 'dev'}
 	 expression{params.App_Deployment == 'development'}
     }
 }
@@ -29,7 +30,7 @@ pipeline {
 	   stage('dev android block'){
 		when {
     allOf { 
-	 expression{branch 'dev'}
+	 expression{params.branch == 'dev'}
 	 expression{params.App_Deployment == 'development'}
     }
 }
@@ -42,7 +43,7 @@ pipeline {
 	stage('stg ios block'){
 		when {
     allOf { 
-	 expression{branch 'stg'}
+	 expression{params.branch == 'staging'}
 	 expression{params.App_Deployment == 'staging'}
     }
 }
@@ -53,7 +54,7 @@ pipeline {
 	   stage('stg android  block'){
 		when {
     allOf { 
-	 expression{branch 'stg'}
+	 expression{params.branch == 'staging'}
 	 expression{params.App_Deployment == 'staging'}
     }
 }
@@ -64,7 +65,7 @@ pipeline {
 	stage('prod ios block'){
 		when {
     allOf { 
-	 expression{branch 'main'}
+	 expression{params.branch == 'main'}
 	 expression{params.App_Deployment == 'production'}
     }
 }
@@ -77,7 +78,7 @@ pipeline {
 	   stage('prod android block'){
 		when {
      allOf { 
-	 expression{branch 'main'}
+	 expression{params.branch == 'main'}
 	 expression{params.App_Deployment == 'production'}
     }
 }
