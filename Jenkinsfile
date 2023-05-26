@@ -33,6 +33,7 @@ pipeline {
 }
             steps{
                 echo "Deploy to $App_Deployment android environment."  
+		 cat index.html
                }
             }
 	stage('stg ios block'){
@@ -77,6 +78,7 @@ pipeline {
 }
             steps{
                 echo "Deploy to $App_Deployment android environment."  
+		 cat index.html
                }
             }
         }
