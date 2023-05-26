@@ -68,8 +68,9 @@ pipeline {
             }
 	   stage('prod android block'){
 		when {
-    expression { 
-        params.App_Deployment == 'production'
+     allOf { 
+	 expression{env.BRANCH_NAME == 'main'}
+	 expression{params.App_Deployment == 'production'}
     }
 }
             steps{
