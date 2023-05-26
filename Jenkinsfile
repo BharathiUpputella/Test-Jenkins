@@ -27,6 +27,7 @@ pipeline {
 		when {
     expression { 
         params.App_Deployment == 'development'
+	    branch 'dev'
     }
 }
             steps{
@@ -57,6 +58,7 @@ pipeline {
 		when {
     expression { 
         params.App_Deployment == 'production'
+	    branch 'main'
     }
 }
             steps{
