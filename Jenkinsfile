@@ -15,8 +15,9 @@ pipeline {
 	}
         stage('dev ios block'){
 		when {
-    expression { 
-        params.App_Deployment == 'development'
+    allOf { 
+	 expression{env.BRANCH_NAME == 'dev'}
+	 expression{params.App_Deployment == 'development'}
     }
 }
             steps{
@@ -58,9 +59,8 @@ pipeline {
 	stage('prod ios block'){
 		when {
     allOf { 
-	branch 'main'
-        params.App_Deployment == 'production'
-	    
+	 expression{env.BRANCH_NAME == 'main'}
+	 expression{params.App_Deployment == 'production'}
     }
 }
             steps{
