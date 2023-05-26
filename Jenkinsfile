@@ -16,24 +16,27 @@ pipeline {
         stage('dev ios block'){
 		when {
     allOf { 
-	 expression{branch 'dev1'}
+	 expression{branch 'dev'}
 	 expression{params.App_Deployment == 'development'}
     }
 }
             steps{
-                echo "Deploy to $App_Deployment ios environment."  
+                sh "echo Deploy to $App_Deployment ios environment"
+		sh "cd ${WORKSPACE}"
+		sh "cat index.html"
                }
             }
 	   stage('dev android block'){
 		when {
     allOf { 
-	 expression{branch 'dev1'}
+	 expression{branch 'dev'}
 	 expression{params.App_Deployment == 'development'}
     }
 }
-            steps{
-                echo "Deploy to $App_Deployment android environment."  
-		 cat index.html
+           steps{
+                sh "echo Deploy to $App_Deployment ios environment"
+		sh "cd ${WORKSPACE}"
+		sh "cat index.html"
                }
             }
 	stage('stg ios block'){
@@ -66,7 +69,9 @@ pipeline {
     }
 }
             steps{
-                echo "Deploy to $App_Deployment ios environment."  
+                sh "echo Deploy to $App_Deployment ios environment"
+		sh "cd ${WORKSPACE}"
+		sh "cat index.html"
                }
             }
 	   stage('prod android block'){
@@ -76,9 +81,10 @@ pipeline {
 	 expression{params.App_Deployment == 'production'}
     }
 }
-            steps{
-                echo "Deploy to $App_Deployment android environment."  
-		 cat index.html
+           steps{
+                sh "echo Deploy to $App_Deployment ios environment"
+		sh "cd ${WORKSPACE}"
+		sh "cat index.html"
                }
             }
         }
