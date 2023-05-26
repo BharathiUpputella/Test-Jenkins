@@ -15,8 +15,9 @@ pipeline {
 	}
         stage('dev ios block'){
 		when {
-    expression { 
-        params.App_Deployment == 'development'
+    allOf { 
+	 expression{env.BRANCH_NAME == 'dev'}
+	 expression{params.App_Deployment == 'development'}
     }
 }
             steps{
@@ -26,8 +27,8 @@ pipeline {
 	   stage('dev android block'){
 		when {
     allOf { 
-        params.App_Deployment == 'development'
-	    branch 'dev'
+	 expression{env.BRANCH_NAME == 'dev'}
+	 expression{params.App_Deployment == 'development'}
     }
 }
             steps{
@@ -57,8 +58,8 @@ pipeline {
 	stage('prod ios block'){
 		when {
     allOf { 
-        params.App_Deployment == 'production'
-	    branch 'main'
+	 expression{env.BRANCH_NAME == 'main'}
+	 expression{params.App_Deployment == 'production'}
     }
 }
             steps{
@@ -67,8 +68,9 @@ pipeline {
             }
 	   stage('prod android block'){
 		when {
-    expression { 
-        params.App_Deployment == 'production'
+     allOf { 
+	 expression{env.BRANCH_NAME == 'main'}
+	 expression{params.App_Deployment == 'production'}
     }
 }
             steps{
