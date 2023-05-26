@@ -27,9 +27,8 @@ pipeline {
 	   stage('dev android block'){
 		when {
     allOf { 
-	branch 'dev'
-        params.App_Deployment == 'development'
-	    
+	 expression{env.BRANCH_NAME == 'dev'}
+	 expression{params.App_Deployment == 'development'}
     }
 }
             steps{
