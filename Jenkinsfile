@@ -37,8 +37,9 @@ pipeline {
             }
 	stage('stg ios block'){
 		when {
-    expression { 
-        params.App_Deployment == 'staging'
+    allOf { 
+	 expression{branch 'stg'}
+	 expression{params.App_Deployment == 'staging'}
     }
 }
             steps{
@@ -47,8 +48,9 @@ pipeline {
             }
 	   stage('stg android  block'){
 		when {
-    expression { 
-        params.App_Deployment == 'staging'
+    allOf { 
+	 expression{branch 'stg'}
+	 expression{params.App_Deployment == 'staging'}
     }
 }
             steps{
