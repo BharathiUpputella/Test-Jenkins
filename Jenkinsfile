@@ -26,8 +26,9 @@ pipeline {
 	   stage('dev android block'){
 		when {
     allOf { 
+	branch 'dev'
         params.App_Deployment == 'development'
-	    branch 'dev'
+	    
     }
 }
             steps{
@@ -57,8 +58,9 @@ pipeline {
 	stage('prod ios block'){
 		when {
     allOf { 
+	branch 'main'
         params.App_Deployment == 'production'
-	    branch 'main'
+	    
     }
 }
             steps{
